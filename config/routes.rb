@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get 'validations/text'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  
+  root to: 'validations#text'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  get 'validations/text'
+  post 'validations/text', to: "validations#validate_text", as: :validate_text
+
 end

@@ -4,6 +4,6 @@ class StringInputDigitError < StandardError
     end
     
     def message
-        "The string must include a number."
+        'The string must include a number.'
     end
 end

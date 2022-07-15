@@ -46,5 +46,19 @@ class ValidationsTest < ActiveSupport::TestCase
         assert_equal text_validator.is_valid?, true
         assert_equal [], text_validator.errors
     end
+    
+    test 'get all errors' do
+        invalid_length ='invalid'
+
+        text_validator = TextValidator.new(invalid_length)
+        
+        text_validator.add_validation :valid_length, {min: 10, max: 15}
+        text_validator.add_validation :contain_digit
+        text_validator.add_validation :contain_uppercase
+        assert_equal text_validator.is_valid?, false
+        errors = ["The length of the input must be between 10 and 15 characters", "The string must include a number.", "The string must include an uppercase character."]
+        puts text_validator.errors.inspect
+        assert_equal errors, text_validator.errors
+    end
 
 end

@@ -40,9 +40,9 @@ This README show the path to solve attack the challenge
 **Solution:** solution 1 because is the quickest
 #### 1.2 Planning the challenge solution
    1. Create custom validators
-   2. Create model for test validator
+   2. Create lib for test validator
    3. Test First - minitest
-   4. Implement Validator to pass test
+   4. Implement Validator to pass test in controllers
 1. Execute the solutions
 2. Deploy and CI
    1. Deploy

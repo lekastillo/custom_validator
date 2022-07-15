@@ -23,11 +23,23 @@ class ValidationsController < ApplicationController
       end
     end
 
-    if errors.size.positive?
-      render json: {errors: errors }, status: 400
-      return
-    end
+    respond_to do |format|
+      format.turbo_stream do
+        puts errors.inspect
+        if errors
+          render turbo_stream: turbo_stream.replace(:errors_list, partial: "validations/errors", locals: { errors: errors })
+        end
+      end
 
-    render json: { status: 'ok' }
+      format.json do
+      
+        if errors.size.positive?
+          render json: {errors: errors }, status: 400
+          return
+        end
+
+        render json: { status: 'ok' }
+      end
+    end
   end
 end

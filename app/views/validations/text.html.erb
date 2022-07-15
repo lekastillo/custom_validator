@@ -1,2 +1,21 @@
-<h1>Validations#text</h1>
-<p>Find me in app/views/validations/text.html.erb</p>
+<div class="flex flex-row w-full">
+
+    <div class="lg:w-1/2">
+        <label for="price" class="block text-sm font-medium text-gray-700">Text to validate</label>
+        <div class="mt-1 relative ">
+            <%= form_tag validate_text_path, method: :post, html: {id: 'form_text'}, data: {remote: true} do %>
+            <input type="text" name="text" id="text" class="focus:ring-indigo-500 focus:border-indigo-500 block w-5/6 pl-7 pr-12 sm:text-sm border-gray-300 rounded-md">
+            <div class="flex flex-row justify-start">
+                <p class="mt mr-4"><%= submit_tag "Test", class: 'bg-blue-500 hover:bg-blue-700  text-white font-bold py-2 px-4 mt-4 rounded' %></p>
+                <p class="mt ml-4"><%= button_tag "Reset", type: 'reset', class: 'bg-yellow-500 hover:bg-green-700  text-white font-bold py-2 px-4 mt-4 rounded' %></p>
+            </div>
+            <% end %>
+        </div>
+    </div>
+    <div class="lg:w-1/2 ">
+        <p class="border-b-2  mb-4">Validations:</p>
+        <ul class="list-disc marker:text-yellow-500 text-yellow-800">
+            <%= render partial: "errors", locals: { errors: [] } %>
+        </ul>
+    </div>
+</div>

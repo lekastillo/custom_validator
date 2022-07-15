@@ -1,5 +1,7 @@
 require_relative '../../lib/validators/text_validator'
 class ValidationsController < ApplicationController
+  skip_before_action :verify_authenticity_token, if: :json_request?
+
   def text
   end
 
@@ -41,5 +43,9 @@ class ValidationsController < ApplicationController
         render json: { status: 'ok' }
       end
     end
+  end
+
+  def json_request?
+    request.format.json?
   end
 end
